@@ -33,7 +33,7 @@ class RNPaypalButtonView: LinearLayout {
     private var address: String? = null
     private var city: String? = null
     private var postalCode: String? = null
-    private var countryCode: String = "FR"
+    private var countryCode: String = "US"
 
     // paypal button
     private lateinit var paypalButton: PayPalButton;
@@ -57,7 +57,7 @@ class RNPaypalButtonView: LinearLayout {
             createOrder = CreateOrder { createOrderActions ->
                 val order =
                     Order(
-                        OrderIntent.AUTHORIZE,
+                        OrderIntent.CAPTURE,
                         AppContext(userAction = UserAction.PAY_NOW, shippingPreference = ShippingPreference.SET_PROVIDED_ADDRESS),
                         listOf(
                             PurchaseUnit(
