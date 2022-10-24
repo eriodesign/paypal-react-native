@@ -66,7 +66,7 @@ class RNPaypalButton : UIView {
   private var referenceId: String?
   private var invoiceId: String?
   private var amount: String = "0.0"
-  private var currency: String = "EUR"
+  private var currency: String = "USD"
 
   // shipping config
   @objc var shipping: NSDictionary = NSDictionary() {
@@ -94,7 +94,7 @@ class RNPaypalButton : UIView {
   private var address: String?
   private var city: String?
   private var postalCode: String?
-  private var countryCode: String = "FR"
+  private var countryCode: String = "US"
 
   //  callbacks
   @objc var onApprove: RCTDirectEventBlock?
@@ -141,7 +141,7 @@ class RNPaypalButton : UIView {
       shipping: shipping
     )
     let applicationContext = OrderApplicationContext.init(shippingPreference: OrderApplicationContext.ShippingPreference.setProvidedAddress, userAction: OrderApplicationContext.UserAction.payNow)
-    let order = OrderRequest(intent: .authorize, purchaseUnits: [purchaseUnit], applicationContext: applicationContext)
+    let order = OrderRequest(intent: .capture, purchaseUnits: [purchaseUnit], applicationContext: applicationContext)
     createOrderAction.create(order: order)
   }
 
